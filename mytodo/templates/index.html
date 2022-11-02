@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block css %}
+.del
+{
+   position:relative;
+   left:1300px;
+   bottom:20px;
+}
+.del:hover
+{
+   background-color:red;
+}
+
+
+
+{% endblock %}
+{% block body %}
+
+<ul id="myUL">
+  {% for item in todo %}
+    <li>{{item.title}}
+      <div>
+
+        <form action="/deleteTodo/{{item.title}}/" method = "post">{% csrf_token %}
+      <button  class="del" type="submit">❎</button>
+        </form>
+
+      </div>
+
+    </li>
+
+  {% endfor %}
+</ul>
+
+
+{% endblock %}
